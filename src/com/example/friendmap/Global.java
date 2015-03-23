@@ -4,8 +4,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 public class Global {
-	private static String strIpMain = "119.29.93.212:8080";
-	//private static String strIpMain = "192.168.1.112:8080";
+	//private static String strIpMain = "119.29.93.212:8080";
+	private static String strIpMain = "192.168.1.112:8080";
 	/** 服务器IP */
 	public static String getIpMain() {
 		// TODO Auto-generated method stub
