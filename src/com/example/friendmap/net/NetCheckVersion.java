@@ -1,11 +1,13 @@
 package com.example.friendmap.net;
 
+import com.example.friendmap.utils.FMCallBack;
+
 import android.os.Handler;
 
 
 public class NetCheckVersion extends NetBase{
-	public NetCheckVersion(Handler handler){
-		super(handler);
+	public NetCheckVersion(FMCallBack fmCallBack){
+		super(fmCallBack);
 		setUrl(encodeUrl("Client/CheckVersion"));
 	}
 

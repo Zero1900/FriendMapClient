@@ -10,6 +10,7 @@ import com.example.friendmap.net.NetBase;
 import com.example.friendmap.net.NetGetUserInfo;
 import com.example.friendmap.net.NetPositionGetAll;
 import com.example.friendmap.user.DataManager;
+import com.example.friendmap.utils.FMCallBack;
 
 import de.greenrobot.event.EventBus;
 import android.app.Activity;
@@ -60,16 +61,15 @@ public class MapPosAllActivity extends MapActivity {
 		if(!bRun){
 			return;
 		}
-		Handler handler = new Handler() {
-			public void handleMessage(Message msg) {
-				if (msg.what == Consts.MSG_NETCALLBCAK) {
-					recvPositionGetAll((FMResponse) msg.obj);
-				}
-				super.handleMessage(msg);
+		FMCallBack fmCallBack=new FMCallBack(new Handler()) {
+			
+			@Override
+			public void callback(Object data) {
+				// TODO Auto-generated method stub
+				recvPositionGetAll((FMResponse)data);
 			}
 		};
-		NetBase msg = new NetPositionGetAll(handler);
-		HttpManager.sendMsg(msg);
+		new NetPositionGetAll(fmCallBack).post();;
 	}
 	public void recvPositionGetAll(FMResponse fmResponse){
 		Handler handler=new Handler();

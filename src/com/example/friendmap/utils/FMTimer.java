@@ -31,7 +31,7 @@ public class FMTimer {
 				if(!run){
 					return;
 				}
-				callBack.callback();
+				callBack.callback(null);
 				doFunc();
 			}
 		};

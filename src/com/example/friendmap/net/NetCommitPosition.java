@@ -7,13 +7,14 @@ import com.example.friendmap.map.FMLocation;
 import com.example.friendmap.map.LocalService;
 import com.example.friendmap.user.DataLocation;
 import com.example.friendmap.user.DataManager;
+import com.example.friendmap.utils.FMCallBack;
 
 import android.os.Handler;
 
 public class NetCommitPosition extends NetBase {
 
-	public NetCommitPosition(Handler handler, FMLocation location) {
-		super(handler);
+	public NetCommitPosition(FMCallBack fmCallBack, FMLocation location) {
+		super(fmCallBack);
 		// TODO Auto-generated constructor stub
 		setUrl(encodeUrl("Client/CommitPosition"));
 		JSONObject jsonObject = new JSONObject();

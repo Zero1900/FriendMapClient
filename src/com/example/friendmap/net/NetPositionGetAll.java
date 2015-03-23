@@ -10,14 +10,15 @@ import org.json.JSONObject;
 
 import com.example.friendmap.FMEvent;
 import com.example.friendmap.map.FMLocation;
+import com.example.friendmap.utils.FMCallBack;
 
 import de.greenrobot.event.EventBus;
 import android.os.Handler;
 
 public class NetPositionGetAll extends NetBase {
 
-	public NetPositionGetAll(Handler handler) {
-		super(handler);
+	public NetPositionGetAll(FMCallBack fmCallBack) {
+		super(fmCallBack);
 		// TODO Auto-generated constructor stub
 		setUrl(encodeUrl("Client/PositionGetAll"));
 	}

@@ -1,6 +1,5 @@
 package com.example.friendmap.ui;
 
-
 import javax.security.auth.callback.Callback;
 
 import com.example.friendmap.Consts;
@@ -10,6 +9,7 @@ import com.example.friendmap.R;
 import com.example.friendmap.net.FMResponse;
 import com.example.friendmap.net.NetBase;
 import com.example.friendmap.net.NetCheckVersion;
+import com.example.friendmap.utils.FMCallBack;
 
 import android.app.Activity;
 import android.content.Context;
@@ -30,41 +30,36 @@ public class LoadActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_load);
 	}
+
 	@Override
-	protected void onStart(){
+	protected void onStart() {
 		super.onStart();
-	    //ʱ��
-		long delayMillis=1000;
-		//ͼ�국�붯��
+		// ʱ��
+		long delayMillis = 1000;
+		// ͼ�국�붯��
 		AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
 		alphaAnimation.setDuration(delayMillis);
-		
-		ImageView imageView=(ImageView)findViewById(R.id.imageview_main_icon);
-		imageView.startAnimation(alphaAnimation);
-		//���ַ��붯��
-		
 
-		AlphaAnimation animTitleAlpha=new AlphaAnimation(0, 1);
+		ImageView imageView = (ImageView) findViewById(R.id.imageview_main_icon);
+		imageView.startAnimation(alphaAnimation);
+		// ���ַ��붯��
+
+		AlphaAnimation animTitleAlpha = new AlphaAnimation(0, 1);
 		animTitleAlpha.setDuration(delayMillis);
-		
-		
-		TranslateAnimation animTitleTrans =
-	              new TranslateAnimation(
-	                  Animation.RELATIVE_TO_SELF,0f,
-	                  Animation.RELATIVE_TO_SELF,0f,
-	                  Animation.RELATIVE_TO_SELF,0.5f,
-	                  Animation.RELATIVE_TO_SELF,0f);
+
+		TranslateAnimation animTitleTrans = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f,
+				Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0f);
 		animTitleTrans.setDuration(delayMillis);
-		
-		AnimationSet animTitleSet=new AnimationSet(true);
+
+		AnimationSet animTitleSet = new AnimationSet(true);
 		animTitleSet.addAnimation(animTitleAlpha);
 		animTitleSet.addAnimation(animTitleTrans);
-		
-		TextView textView=(TextView)findViewById(R.id.textview_main_title);
+
+		TextView textView = (TextView) findViewById(R.id.textview_main_title);
 		textView.startAnimation(animTitleSet);
-		//�ȴ�ʱ��
-		Handler handler=new Handler();
-		Runnable runnable=new Runnable() {
+		// �ȴ�ʱ��
+		Handler handler = new Handler();
+		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
@@ -73,23 +68,24 @@ public class LoadActivity extends BaseActivity {
 		};
 		handler.postDelayed(runnable, delayMillis);
 	}
-	
-	public void sendCheckVersion(){
-		Handler handler = new Handler() {  
-	          public void handleMessage(Message msg) {   
-	               if (msg.what==Consts.MSG_NETCALLBCAK){
-	            	   recvCheckVersion((FMResponse) msg.obj);
-	               }
-	               super.handleMessage(msg);   
-	          }   
-	     };
-		NetBase msg=new NetCheckVersion(handler);
-		HttpManager.sendMsg(msg);
+
+	public void sendCheckVersion() {
+		FMCallBack fmCallBack=new FMCallBack(new Handler()) {
+			
+			@Override
+			public void callback(Object data) {
+				// TODO Auto-generated method stub
+				recvCheckVersion((FMResponse)data);
+			}
+		};
+		new NetCheckVersion(fmCallBack).post();
 	}
-	public void recvCheckVersion(FMResponse response){
+
+	public void recvCheckVersion(FMResponse response) {
 		onNextActivity();
 	}
-	public void onNextActivity(){
+
+	public void onNextActivity() {
 		Intent intent = new Intent(LoadActivity.this, LoginActivity.class);
 		startActivity(intent);
 		overridePendingTransition(R.anim.abc_fade_in, R.anim.hold);

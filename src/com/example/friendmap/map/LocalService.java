@@ -12,6 +12,7 @@ import com.example.friendmap.net.NetBase;
 import com.example.friendmap.net.NetCommitPosition;
 import com.example.friendmap.net.NetLogin;
 import com.example.friendmap.user.DataManager;
+import com.example.friendmap.utils.FMCallBack;
 
 import android.annotation.SuppressLint;
 import android.app.Service;
@@ -125,8 +126,15 @@ public class LocalService extends Service {
 				super.handleMessage(msg);
 			}
 		};
-		NetBase msg = new NetCommitPosition(handler, fmLocation);
-		HttpManager.sendMsg(msg);
+		FMCallBack fmCallBack=new FMCallBack(new Handler()) {
+			
+			@Override
+			public void callback(Object data) {
+				// TODO Auto-generated method stub
+				recvCommit((FMResponse)data);
+			}
+		};
+		new NetCommitPosition(fmCallBack, fmLocation).post();
 	}
 
 	/**

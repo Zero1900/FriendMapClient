@@ -54,7 +54,7 @@ public class RowButton extends LinearLayout{
 				if(event.getAction()==MotionEvent.ACTION_DOWN){
 					view.setBackgroundColor(mColorDown);
 				}
-				else {
+				else if(event.getAction()==MotionEvent.ACTION_CANCEL||event.getAction()==MotionEvent.ACTION_UP) {
 					view.setBackgroundColor(mColorUp);
 				}
 				return false;

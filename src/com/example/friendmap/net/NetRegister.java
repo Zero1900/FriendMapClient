@@ -6,13 +6,15 @@ import org.json.JSONObject;
 
 
 
+
+import com.example.friendmap.utils.FMCallBack;
 import com.example.friendmap.utils.MD5;
 
 import android.os.Handler;
 
 public class NetRegister extends NetBase {
-	public NetRegister(Handler handler,String username,String nickname,String passwordsrc) {
-		super(handler);
+	public NetRegister(FMCallBack fmCallBack,String username,String nickname,String passwordsrc) {
+		super(fmCallBack);
 		// TODO Auto-generated constructor stub
 		setUrl(encodeUrl("Client/Register"));
 		try {

@@ -5,13 +5,14 @@ import org.json.JSONObject;
 import com.example.friendmap.FMApplication;
 import com.example.friendmap.user.DataManager;
 import com.example.friendmap.user.DataUserInfo;
+import com.example.friendmap.utils.FMCallBack;
 
 import android.os.Handler;
 
 public class NetGetUserInfo extends NetBase {
 
-	public NetGetUserInfo(Handler handler) {
-		super(handler);
+	public NetGetUserInfo(FMCallBack fmCallBack) {
+		super(fmCallBack);
 		// TODO Auto-generated constructor stub
 		setUrl(encodeUrl("Client/GetUserInfo"));
 	}

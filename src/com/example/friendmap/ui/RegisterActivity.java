@@ -13,6 +13,7 @@ import com.example.friendmap.R.layout;
 import com.example.friendmap.net.FMResponse;
 import com.example.friendmap.net.NetBase;
 import com.example.friendmap.net.NetRegister;
+import com.example.friendmap.utils.FMCallBack;
 import com.example.friendmap.utils.MD5;
 
 import android.R.integer;
@@ -61,16 +62,15 @@ public class RegisterActivity extends BaseActivity {
 	}
 
 	public void sendRegister(final String username, String nickname, final String passwordsrc) {
-		Handler handler = new Handler() {
-			public void handleMessage(Message msg) {
-				if (msg.what == Consts.MSG_NETCALLBCAK) {
-					recvRegister((FMResponse) msg.obj,username,passwordsrc);
-				}
-				super.handleMessage(msg);
+		FMCallBack fmCallBack=new FMCallBack(new Handler()) {
+			
+			@Override
+			public void callback(Object data) {
+				// TODO Auto-generated method stub
+				recvRegister((FMResponse) data, username, passwordsrc);
 			}
 		};
-		NetBase msg=new NetRegister(handler, username, nickname, passwordsrc);
-		HttpManager.sendMsg(msg);
+		new NetRegister(fmCallBack, username, nickname, passwordsrc).post();
 		
 	}
 

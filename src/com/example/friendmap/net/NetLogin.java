@@ -6,14 +6,15 @@ import org.json.JSONObject;
 import com.example.friendmap.FMApplication;
 import com.example.friendmap.user.DataLogin;
 import com.example.friendmap.user.DataManager;
+import com.example.friendmap.utils.FMCallBack;
 import com.example.friendmap.utils.MD5;
 
 import android.os.Handler;
 
 public class NetLogin extends NetBase{
 
-	public NetLogin(Handler handler,String username,String passwordsrc) {
-		super(handler);
+	public NetLogin(FMCallBack fmCallBack,String username,String passwordsrc) {
+		super(fmCallBack);
 		// TODO Auto-generated constructor stub
 		setUrl(encodeUrl("Client/Login"));
 		try {

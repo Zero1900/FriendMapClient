@@ -22,22 +22,23 @@ import android.view.TextureView.SurfaceTextureListener;
 
 import com.example.friendmap.Consts;
 import com.example.friendmap.Global;
+import com.example.friendmap.HttpManager;
 import com.example.friendmap.user.DataManager;
+import com.example.friendmap.utils.FMCallBack;
 
 public abstract class NetBase {
 	private String url = "", request = "";
-	protected Handler handler;
-
-	public NetBase(Handler handler) {
-		this.handler = handler;
+	protected FMCallBack fmCallBack;
+	
+	public NetBase(FMCallBack fmCallBack) {
+		this.fmCallBack=fmCallBack;
 	}
-
-	public void onRecv(FMResponse response) {
-		if (handler != null) {
-			Message msg = new Message();
-			msg.obj = response;
-			msg.what = Consts.MSG_NETCALLBCAK;
-			handler.sendMessage(msg);
+	public void post(){
+		HttpManager.sendMsg(this);
+	}
+	public void onRecv(final FMResponse response) {
+		if(fmCallBack!=null){
+			fmCallBack.post(response);
 		}
 	}
 

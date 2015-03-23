@@ -11,6 +11,7 @@ import com.example.friendmap.net.FMResponse;
 import com.example.friendmap.net.NetBase;
 import com.example.friendmap.net.NetGetUserInfo;
 import com.example.friendmap.net.NetLogin;
+import com.example.friendmap.utils.FMCallBack;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -72,16 +73,15 @@ public class LoginActivity extends BaseActivity {
 	 */
 	@SuppressLint("HandlerLeak")
 	public void sendLogin(String username, String passwordsrc) {
-		Handler handler = new Handler() {
-			public void handleMessage(Message msg) {
-				if (msg.what == Consts.MSG_NETCALLBCAK) {
-					recvLogin((FMResponse) msg.obj);
-				}
-				super.handleMessage(msg);
+		FMCallBack fmCallBack=new FMCallBack(new Handler()) {
+			
+			@Override
+			public void callback(Object data) {
+				// TODO Auto-generated method stub
+				recvLogin((FMResponse) data);
 			}
 		};
-		NetBase msg = new NetLogin(handler, username, passwordsrc);
-		HttpManager.sendMsg(msg);
+		new NetLogin(fmCallBack, username, passwordsrc).post();;
 	}
 	/**
 	 * 接收登录消息
@@ -105,16 +105,16 @@ public class LoginActivity extends BaseActivity {
 	 * 发送获取用户信息的消息
 	 */
 	public void sendGetUserInfo() {
-		Handler handler = new Handler() {
-			public void handleMessage(Message msg) {
-				if (msg.what == Consts.MSG_NETCALLBCAK) {
-					recvGetUserInfo((FMResponse) msg.obj);
-				}
-				super.handleMessage(msg);
+
+		FMCallBack fmCallBack=new FMCallBack(new Handler()) {
+			
+			@Override
+			public void callback(Object data) {
+				// TODO Auto-generated method stub
+				recvGetUserInfo((FMResponse) data);
 			}
 		};
-		NetBase msg = new NetGetUserInfo(handler);
-		HttpManager.sendMsg(msg);
+		new NetGetUserInfo(fmCallBack).post();
 	}
 	/**
 	 * 接收获取用户信息的消息
