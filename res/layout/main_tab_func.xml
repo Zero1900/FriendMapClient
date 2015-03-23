@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res/com.example.friendmap"
+    android:id="@+id/ly_main_weixin"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/ui_main_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <com.example.friendmap.ui.utils.RowButton
+        android:id="@+id/ui_tab_func_mapall_rowbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:rowbutton_image_src="@android:drawable/ic_menu_mylocation"
+        app:rowbutton_color_down="@color/rowbutton_default_down"
+        app:rowbutton_color_up="@color/rowbutton_default_up" />
+
+</LinearLayout>

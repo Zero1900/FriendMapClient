@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res/com.example.friendmap"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_main_weixin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ui_main_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <RelativeLayout
+        android:id="@+id/ui_tab_user_info_relativelayout"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/ui_tab_item_bg" >
+
+        <TextView
+            android:id="@+id/ui_tab_user_info_username_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ui_tab_user_info_nickname_textview"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:text="用户名"
+            android:textColor="@color/ui_tab_user_info_username"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/ui_tab_user_info_nickname_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ui_tab_user_info_username_textview"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="80dp"
+            android:text="昵称"
+            android:textColor="@color/ui_tab_user_info_nickname"
+            android:textSize="22sp" />
+    </RelativeLayout>
+
+    <com.example.friendmap.ui.utils.RowButton
+        android:id="@+id/ui_tab_user_test_rowbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:rowbutton_color_down="@color/rowbutton_default_down"
+        app:rowbutton_color_up="@color/rowbutton_default_up" />
+
+</LinearLayout>

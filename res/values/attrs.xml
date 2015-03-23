@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="colorbutton">
+       <attr name="colorbutton_color_up" format="color"></attr>
+       <attr name="colorbutton_color_down" format="color"></attr>
+   </declare-styleable>
+   <declare-styleable name="rowbutton">
+       <attr name="rowbutton_color_up" format="color"></attr>
+       <attr name="rowbutton_color_down" format="color"></attr>
+       <attr name="rowbutton_text_content" format="string"></attr>
+       <attr name="rowbutton_image_src" format="reference"></attr>
+   </declare-styleable>
+</resources>

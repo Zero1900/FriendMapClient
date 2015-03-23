@@ -1,0 +1,118 @@
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res/com.example.friendmap"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/ui_load_bg"
+    android:orientation="vertical" >
+	
+    <ImageView
+        android:id="@+id/imageview_main_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/ui_load_bg"
+        android:contentDescription="@string/app_name"
+        android:scaleType="center"
+        android:src="@drawable/ui_icon_map" />
+
+    <!-- 表格布局 -->
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/shape_top_corner"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dip"
+                android:layout_marginRight="10dip"
+                android:text="@string/ui_login_username" />
+
+            <EditText
+                android:id="@+id/ui_login_username_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="none"
+                android:singleLine="true" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/shape_bottom_corner"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dip"
+                android:layout_marginRight="10dip"
+                android:text="@string/ui_login_password" />
+
+            <EditText
+                android:id="@+id/ui_login_password_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </TableRow>
+
+        <com.example.friendmap.ui.utils.ColorButton
+            android:id="@+id/ui_login_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:onClick="onBtnClickLogin"
+            android:text="@string/ui_login_login"
+            android:textColor="@color/ui_login_login_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:colorbutton_color_down="@color/ui_login_login_button_down"
+            app:colorbutton_color_up="@color/ui_login_login_button_up" />
+
+        <com.example.friendmap.ui.utils.ColorButton
+            android:id="@+id/ui_login_register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:onClick="onBtnClickRegister"
+            android:text="@string/ui_login_register"
+            android:textColor="@color/ui_login_login_text"
+            android:textColorHint="@color/ui_login_login_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:colorbutton_color_down="@color/ui_login_login_button_down"
+            app:colorbutton_color_up="@color/ui_login_login_button_up" />
+    </TableLayout>
+
+</RelativeLayout>

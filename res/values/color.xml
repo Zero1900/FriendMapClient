@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ui_bottom_bg">#eee</color>
+    <color name="ui_bottom_btn">#555</color>
+    <color name="ui_main_bg">#d0d0d0</color>
+    <color name="ui_load_bg">#63B8FF</color>
+    <color name="ui_title_bg">#eee</color>
+    <color name="ui_title_text">#999</color>
+    <color name="ui_login_bg">#73c1ff</color>
+    <color name="ui_login_login_button_up">#F9F900</color>
+    <color name="ui_login_login_button_down">#EAC100</color>
+    <color name="ui_login_login_text">#D26900</color>
+    <color name="rowbutton_default_bg_up">#eee</color>
+    <color name="rowbutton_default_up">#eee</color>
+    <color name="rowbutton_default_down">#b6b6b6</color>
+    <color name="ui_tab_item_bg">#eee</color>
+    <color name="ui_tab_user_info_nickname">#333</color>
+    <color name="ui_tab_user_info_username">#333</color>
+</resources>
